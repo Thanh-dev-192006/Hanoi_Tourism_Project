@@ -59,7 +59,7 @@ class HanoiAStar:
         print(f"Gioi han thoi gian: {time_limit_hours} gio (den {end_time.strftime('%H:%M')})")
         print("=" * 60)
         
-        # Priority queue: (f_score, locations_count, total_time, location, visited_mask, current_time, route)
+        
         pq = [(0, -1, 0, 0, 1, start_datetime, [0])]
         seen = set()
         
@@ -151,10 +151,10 @@ class HanoiAStar:
         # Them thoi gian tham quan diem dau tien
         total_visit_time += self.locations[0]["visit_time"]
         
-        # ✅ FIX 1: Tính tổng thời gian ĐÚNG
+        # Tính tổng thời gian 
         total_time_correct = total_travel_time + total_visit_time
         
-        # ✅ FIX 2: Tính thời gian kết thúc ĐÚNG (tham quan điểm 1 TRƯỚC)
+        # ✅ Tính thời gian kết thúc
         end_datetime = start_datetime
         # Tham quan điểm đầu tiên TRƯỚC
         end_datetime += timedelta(minutes=self.locations[0]["visit_time"])
@@ -170,13 +170,13 @@ class HanoiAStar:
         print("KET QUA A*")
         print("=" * 60)
         print(f"Lo trinh: {' -> '.join([self.locations[i]['name'] for i in best_route])}")
-        print(f"Tong thoi gian: {total_time_correct} phut ({total_time_correct/60:.1f} gio)")  # ✅ FIXED
+        print(f"Tong thoi gian: {total_time_correct} phut ({total_time_correct/60:.1f} gio)")
         print(f"Dia diem da tham: {best_count}/7")
         print(f"Thoi gian di chuyen: {total_travel_time} phut")
         print(f"Thoi gian tham quan: {total_visit_time} phut")
         print(f"Ket thuc luc: {end_datetime.strftime('%H:%M')}")
         
-        return best_route, total_time_correct  # ✅ FIXED: return total_time_correct
+        return best_route, total_time_correct  
 
 # Chay thuat toan A*
 if __name__ == "__main__":
@@ -185,4 +185,5 @@ if __name__ == "__main__":
     print("THUAT TOAN A* CHO DU LICH HA NOI")
     route, total_time = solver.solve(time_limit_hours=6)
     
+
     print("\n" + "="*60)
