@@ -59,7 +59,7 @@ class HanoiGreedy:
         print(f"Gioi han thoi gian: {time_limit_hours} gio (den {end_time.strftime('%H:%M')})")
         print("=" * 60)
         
-        # ✅ FIX: Tham quan điểm xuất phát TRƯỚC KHI đi tiếp
+        
         print(f"Tham quan {self.locations[0]['name']}: {self.locations[0]['visit_time']} phut")
         current_time += timedelta(minutes=self.locations[0]["visit_time"])
         total_visit_time += self.locations[0]["visit_time"]
@@ -117,7 +117,7 @@ class HanoiGreedy:
             print(f"   Hoan thanh luc: {current_time.strftime('%H:%M')}")
             print()
         
-        # ✅ FIX: Bây giờ total_visit_time đã bao gồm điểm 0
+    
         total_time = total_travel_time + total_visit_time
         
         # Kết quả
@@ -141,4 +141,5 @@ if __name__ == "__main__":
     print("THUAT TOAN GREEDY CHO DU LICH HA NOI")
     route, total_time = solver.solve(time_limit_hours=6)
     
+
     print("\n" + "="*60)
